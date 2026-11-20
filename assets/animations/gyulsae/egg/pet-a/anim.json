@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-egg-pet-a",
+  "label": "알 — 쓰담 A 손에 기대 비비기 (누르는 동안 반복)",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 19,
+  "totalMs": 2150,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [80, 120, 70, 90, 220, 90, 70, 90, 220, 90, 70, 90, 220, 90, 70, 90, 220, 90, 70],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}

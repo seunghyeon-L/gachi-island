@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-juvenile-panic-a",
+  "label": "어린 귤새 — 혼비백산 달리기 A (반복)",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 8,
+  "totalMs": 360,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [50, 40, 50, 40, 50, 40, 50, 40],
+  "motionPx": [0, 3, 3, 2, 0, 3, 3, 3],
+  "liftPx": [0, 0, -3, -2, 0, 0, -3, -2]
+}

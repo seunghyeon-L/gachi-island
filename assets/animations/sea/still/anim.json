@@ -1,0 +1,14 @@
+{
+  "id": "sea",
+  "label": "바다 — 정지 (디자이너 원본 한 장)",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 1,
+  "totalMs": 1000,
+  "sheet": "sheet.png",
+  "shadow": null,
+  "durationsMs": [1000],
+  "motionPx": [0],
+  "liftPx": [0]
+}

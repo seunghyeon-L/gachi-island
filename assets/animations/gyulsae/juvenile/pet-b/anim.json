@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-juvenile-pet-b",
+  "label": "어린 귤새 — 쓰담 B 손 뗄 때 폴짝 (1회)",
+  "playback": "once",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 11,
+  "totalMs": 1110,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [60, 110, 60, 50, 110, 70, 90, 100, 240, 60, 160],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, -3, -5, -4, 0, 0, 0, 0, 0]
+}

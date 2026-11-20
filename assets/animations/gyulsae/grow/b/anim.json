@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-grow-b",
+  "label": "자라기 (어린 귤새 → 성체 귤새) B 쑥쑥 (웅크렸다 배가 한 줄씩 자람 → 새싹 퐁)",
+  "playback": "once",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 19,
+  "totalMs": 2620,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [400, 110, 220, 50, 50, 60, 70, 80, 90, 100, 90, 90, 150, 140, 300, 50, 100, 70, 400],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}

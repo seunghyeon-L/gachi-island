@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-egg-pet-b",
+  "label": "알 — 쓰담 B 손 뗄 때 폴짝 (1회)",
+  "playback": "once",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 13,
+  "totalMs": 1090,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [60, 100, 60, 60, 110, 50, 80, 60, 80, 70, 80, 100, 180],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, -4, -5, -3, 0, 0, -2, 0, 0, 0, 0]
+}

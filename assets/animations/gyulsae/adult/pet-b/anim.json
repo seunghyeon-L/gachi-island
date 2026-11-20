@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-adult-pet-b",
+  "label": "성체 귤새 — 쓰담 B 손 뗄 때 폴짝 (1회)",
+  "playback": "once",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 12,
+  "totalMs": 1160,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [60, 120, 60, 50, 60, 60, 60, 90, 110, 260, 60, 170],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, -3, -5, -5, -4, 0, 0, 0, 0, 0]
+}

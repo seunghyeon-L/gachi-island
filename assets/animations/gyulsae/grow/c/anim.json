@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-grow-c",
+  "label": "자라기 (어린 귤새 → 성체 귤새) C 깜빡 (작은·중간·큰 그림 번갈기, 마리오식)",
+  "playback": "once",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 10,
+  "totalMs": 1236,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [300, 67, 67, 67, 67, 67, 67, 67, 67, 400],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}

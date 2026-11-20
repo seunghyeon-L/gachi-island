@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-egg-roll",
+  "label": "알 — 구르기",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 16,
+  "totalMs": 1650,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [160, 110, 85, 80, 90, 85, 95, 120, 160, 110, 85, 80, 90, 85, 95, 120],
+  "motionPx": [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3],
+  "liftPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}

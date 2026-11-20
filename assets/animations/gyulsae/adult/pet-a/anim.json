@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-adult-pet-a",
+  "label": "성체 귤새 — 쓰담 A 손에 기대 비비기 (누르는 동안 반복)",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 16,
+  "totalMs": 2290,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [60, 80, 140, 120, 250, 110, 120, 250, 110, 120, 250, 110, 120, 250, 110, 90],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "pet-heart",
+  "label": "이펙트 — 쓰담 하트 (가운데)",
+  "playback": "once",
+  "frameWidth": 32,
+  "frameHeight": 48,
+  "frameCount": 20,
+  "totalMs": 660,
+  "sheet": "sheet.png",
+  "shadow": null,
+  "pivot": [16, 44],
+  "lifetimeMs": 650,
+  "durationsMs": [33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33],
+  "motionPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}

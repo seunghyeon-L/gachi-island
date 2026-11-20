@@ -1,0 +1,14 @@
+{
+  "id": "volcano",
+  "label": "화산 — 정지 (디자이너 원본)",
+  "playback": "loop",
+  "frameWidth": 96,
+  "frameHeight": 128,
+  "frameCount": 1,
+  "totalMs": 1000,
+  "sheet": "sheet.png",
+  "shadow": null,
+  "durationsMs": [1000],
+  "motionPx": [0],
+  "liftPx": [0]
+}

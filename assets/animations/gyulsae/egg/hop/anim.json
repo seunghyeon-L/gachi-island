@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-egg-hop",
+  "label": "알 — 통통",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 8,
+  "totalMs": 640,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [120, 90, 50, 60, 120, 50, 80, 70],
+  "motionPx": [0, 0, 3, 4, 3, 4, 1, 0],
+  "liftPx": [0, 0, 0, 0, 0, 0, 0, 0]
+}

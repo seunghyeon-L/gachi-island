@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-egg-idle-b",
+  "label": "알 — 가만히 B 갸웃",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 5,
+  "totalMs": 4300,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [1300, 650, 1200, 650, 500],
+  "motionPx": [0, 0, 0, 0, 0],
+  "liftPx": [0, 0, 0, 0, 0]
+}

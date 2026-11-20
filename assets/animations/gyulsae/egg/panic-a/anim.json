@@ -1,0 +1,14 @@
+{
+  "id": "gyulsae-egg-panic-a",
+  "label": "알 — 혼비백산 달리기 A (반복)",
+  "playback": "loop",
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frameCount": 10,
+  "totalMs": 450,
+  "sheet": "sheet.png",
+  "shadow": "shadow.png",
+  "durationsMs": [50, 40, 60, 40, 50, 50, 40, 40, 40, 40],
+  "motionPx": [0, 2, 3, 2, 0, 3, 2, 0, 2, 2],
+  "liftPx": [0, 0, -5, -3, 0, 0, -2, 0, 0, -2]
+}
