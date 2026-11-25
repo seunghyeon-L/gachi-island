@@ -1,6 +1,6 @@
 # 애니메이션 목록 (자동 생성 — 손으로 고치지 말 것)
 
-원본 도트 파일에서 내보내기 도구가 만듦(도구는 이 저장소에 없음). 형식 설명은 [README.md](README.md). 모두 54개. id 는 꼭 이 표나 index.json 에서 찾을 것 — 폴더 이름에서 추측하면 틀릴 수 있음 (예: 정지 = `gyulsae-adult`, 하트 = `pet-heart`, 바다 일렁임 = `sea-v4-b`).
+원본 도트 파일에서 내보내기 도구가 만듦(도구는 이 저장소에 없음). 형식 설명은 [README.md](README.md). 모두 56개. id 는 꼭 이 표나 index.json 에서 찾을 것 — 폴더 이름에서 추측하면 틀릴 수 있음 (예: 정지 = `gyulsae-adult`, 하트 = `pet-heart`, 바다 일렁임 = `sea-v4-b`).
 
 | id | 폴더 | 크기 | 장 | 한 바퀴 | 재생 | 그림자 | 설명 |
 |---|---|---|---|---|---|---|---|
@@ -13,6 +13,8 @@
 | `fx-firework-a` | [fx/firework-a](fx/firework-a/) | 32×32 | 7 | 710ms | once |  | 이펙트 — 폭죽 A — 흰 십자 → 연두·주황 빛살 → 붉게 바램 (1회, 가운데 기준) |
 | `fx-firework-b` | [fx/firework-b](fx/firework-b/) | 32×32 | 7 | 710ms | once |  | 이펙트 — 폭죽 B — 흰 점 → 노란 마름모 고리가 퍼지며 끝이 붉게 바램 (1회, 가운데 기준) |
 | `fx-firework-c` | [fx/firework-c](fx/firework-c/) | 32×32 | 7 | 710ms | once |  | 이펙트 — 폭죽 C — 흰 고리 → 노란 고리가 크게 퍼지며 끝이 붉게 바램 (1회, 가운데 기준) |
+| `fx-question` | [fx/question](fx/question/) | 16×16 | 13 | 930ms | once |  | 이펙트 — 갸웃 "?" 말풍선 (1회, 고치 머리 위) — 혼비백산 "!" 말풍선 틀에 글자만 ? |
+| `fx-leaf` | [fx/leaf](fx/leaf/) | 3×2 | 3 | 360ms | timeline |  | 이펙트 — 나뭇잎 3모양 (0 ／ · 1 ＼ · 2 — 누움) — 숲 탐험 재생표가 장 번호를 정함 |
 | `gyulsae-adult-idle` | [gyulsae/adult/idle](gyulsae/adult/idle/) | 32×32 | 17 | 3720ms | loop | ○ | 성체 귤새 — 가만히 (숨쉬기·깜빡임) |
 | `gyulsae-adult-panic-a` | [gyulsae/adult/panic-a](gyulsae/adult/panic-a/) | 32×32 | 8 | 400ms | loop | ○ | 성체 귤새 — 혼비백산 달리기 A (반복) |
 | `gyulsae-adult-panic-b` | [gyulsae/adult/panic-b](gyulsae/adult/panic-b/) | 32×32 | 6 | 240ms | loop | ○ | 성체 귤새 — 혼비백산 달리기 B (반복) |

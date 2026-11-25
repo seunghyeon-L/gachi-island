@@ -1,0 +1,71 @@
+{
+  "format": "gachi-explore-characters/1",
+  "note": "탐험하는 캐릭터마다 쓸 동작 폴더(gachi-island assets/animations 기준)와 몸 치수. 줄 번호는 32×32 그림 안의 y. 새 캐릭터는 여기 한 항목만 더하면 같은 탐험 순서로 움직임.",
+  "fields": {
+    "anims.idle": "가만히(숨쉬기) 동작 폴더 — 서기·뒤적·잠기기에 씀",
+    "anims.walk": "걷기 동작 폴더. 없으면 null → 가만히 그림으로 통통 뛰며 걸음",
+    "feetRow": "발바닥 줄",
+    "eyeRow": "눈 흰 반짝이 줄 — 잎에 잠길 때 이 줄+4 까지는 보임, 두리번 때 이 줄-1 ~ +6 의 얼굴 칸을 옆으로 옮김",
+    "headTopRow": "머리(새싹 포함) 맨 윗줄 — 말풍선 자리",
+    "crouchRow": "웅크릴 때 빼는 배 줄(이 줄부터 아래로) — 나무 박치기 전에 씀",
+    "faceX": "두리번 때 얼굴을 찾는 가로 범위 [시작, 끝)",
+    "bodyColors": "몸(얼굴 아님) 색 — 첫 색 = 얼굴을 옮기고 빈자리를 채우는 색",
+    "anims.startle": "깜짝 동작(찾았을 때 \"!\") — 없으면 null",
+    "anims.cheer": "신나서 폴짝 동작(물건 얻고 나서) — 없으면 null → 가만히 그림으로 폴짝"
+  },
+  "characters": {
+    "adult": {
+      "label": "성체 귤새",
+      "anims": {
+        "idle": "gyulsae/adult/idle",
+        "walk": "gyulsae/adult/waddle",
+        "startle": "gyulsae/adult/startle",
+        "cheer": "gyulsae/adult/pet-b"
+      },
+      "feetRow": 30,
+      "eyeRow": 11,
+      "headTopRow": 0,
+      "crouchRow": 20,
+      "faceX": [
+        8,
+        25
+      ],
+      "bodyColors": [
+        "#ff8a3d",
+        "#ff8d3e",
+        "#f7863b",
+        "#f2833a",
+        "#000000",
+        "#e67e36",
+        "#d96a2e",
+        "#0d0d0d"
+      ]
+    },
+    "juvenile": {
+      "label": "어린 귤새",
+      "anims": {
+        "idle": "gyulsae/juvenile/idle",
+        "walk": null,
+        "startle": "gyulsae/juvenile/startle",
+        "cheer": "gyulsae/juvenile/pet-b"
+      },
+      "feetRow": 30,
+      "eyeRow": 18,
+      "headTopRow": 10,
+      "crouchRow": 25,
+      "faceX": [
+        6,
+        26
+      ],
+      "bodyColors": [
+        "#ff8a3d",
+        "#f7863b",
+        "#ef8239",
+        "#d96a2e",
+        "#d1662c",
+        "#c9622a",
+        "#000000"
+      ]
+    }
+  }
+}

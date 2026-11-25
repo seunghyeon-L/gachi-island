@@ -33,6 +33,7 @@ assets/animations/gyulsae/adult/waddle/
 | 경로 | 무엇 |
 |---|---|
 | `assets/animations/` | 애니메이션 (귤새 · 화산 · 바다 · 이펙트 · 화산재 시간표) |
+| `assets/scenes/forest-explore/` | 숲 탐험 (시작 · 숲 속 돌아다니기 반복 · 물건 찾기 · 떠나기) — [README](assets/scenes/forest-explore/README.md) |
 | `assets/island/` | 섬 조각 그림 + 섬마다 칸 배치 |
 | `assets/surf/` | 해안 파도 셰이더 그림 |
 | `assets/ui/` | 앱 화면 요소 그림 |

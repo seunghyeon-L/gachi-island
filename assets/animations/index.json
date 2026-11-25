@@ -57,6 +57,8 @@
     "volcano": "volcano/still",
     "fx-firework-a": "fx/firework-a",
     "fx-firework-b": "fx/firework-b",
-    "fx-firework-c": "fx/firework-c"
+    "fx-firework-c": "fx/firework-c",
+    "fx-question": "fx/question",
+    "fx-leaf": "fx/leaf"
   }
 }
