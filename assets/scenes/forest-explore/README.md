@@ -72,7 +72,6 @@ assets/animations/fx/            이펙트 시트 (다른 애니메이션과 같
 └── firework-a · firework-b · firework-c    폭죽 32×32 · 7장 (가운데 기준)
 
 src/forestExplore.ts             그리기 규칙 정답 코드 (compose · 순서 재생기 ForestExplore)
-tools/forest-explore/            만드는 도구 (파이썬) — make_route.py · explore_engine.py · bake.py
 ```
 
 캐릭터: `adult`(성체 귤새) · `juvenile`(어린 귤새 — 걷기 동작이 없어 통통 뛰며 걸음).
@@ -190,13 +189,7 @@ fx.leave();       // leave 1회 → 'done'
 1. `source/characters.json` 에 한 항목 추가 — 동작 폴더(`idle` · `walk` · `startle` 깜짝 · `cheer` 신남, 없으면 null)와 몸 치수:
    `feetRow`(발바닥 줄) · `eyeRow`(눈 흰 반짝이 줄) · `headTopRow`(머리 맨 윗줄) · `crouchRow`(웅크릴 때 빼는 배 줄) · `faceX`(얼굴 찾는 가로 범위) · `bodyColors`(몸 색, 첫 색 = 얼굴 옮긴 빈자리 채우는 색).
    잎에 잠기는 깊이(`발 − (눈 + 5)`)·두리번(얼굴 칸 1~2칸 옆으로)·말풍선 자리가 이 치수로 정해져요.
-2. 굽기:
-   ```bash
-   python -I -X utf8 tools/forest-explore/make_route.py   # 장면 정의 (source/scenes/) — 동선을 고쳤을 때만
-   python -I -X utf8 tools/forest-explore/bake.py         # characters/<캐릭터>/ 다시 만듦 + 엔진 그림과 모든 장 비교(어긋나면 mismatched 로 알려 줌)
-   python -I -X utf8 tools/forest-explore/explore_engine.py   # 확인용 GIF → tools/forest-explore/preview/ (커밋 안 함)
-   ```
-3. 동선(걷는 길·멈춤·잠기기·뒤적·나무 흔들기)은 `make_route.py` 의 `build()` · `build_intro()` · `build_found()` · `build_leave()` 에 순서대로 적혀 있어요.
+2. 굽기: 만드는 도구(파이썬 — 장면 정의 · 엔진 · 굽기+전 장 비교)는 이 저장소에 넣지 않고 애니메이션 담당이 따로 가지고 있어요. 새 캐릭터·동선 변경이 필요하면 담당에게 요청하면 `characters/<캐릭터>/` 를 다시 구워 올려요 (구울 때마다 원본 그림과 모든 장을 비교해 어긋남이 없는지 확인).
 
 ---
 

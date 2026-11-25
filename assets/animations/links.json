@@ -1,41 +1,6 @@
 {
-  "_about": "화면 설정 — 어떤 애니메이션(animations/index.json 의 id)을 화면 어디에 쓰는지. 그림·프레임 시간 자체는 animations/ 폴더.",
-  "tileSize": 32,
-  "tiles": "island/tiles.png",
-  "tileCount": 29,
-  "defaultDesign": "jeju",
-  "designs": [
-    {
-      "key": "jeju",
-      "label": "제주 — 가로로 긴 섬 (넓히면 우도·마라도)",
-      "file": "island/jeju.json"
-    },
-    {
-      "key": "v6-a",
-      "label": "6차 A — 첫 안 — 위 봉우리 · 좌우 만 엇갈림",
-      "file": "island/v6-a.json"
-    },
-    {
-      "key": "v6-b",
-      "label": "6차 B — 넓은 섬 — 곶이 화면 양끝까지",
-      "file": "island/v6-b.json"
-    },
-    {
-      "key": "v6-c",
-      "label": "6차 C — 오른쪽 깊은 만 + 넓히면 작은 섬",
-      "file": "island/v6-c.json"
-    },
-    {
-      "key": "v6-d",
-      "label": "6차 D — 아래 해변이 두 갈래",
-      "file": "island/v6-d.json"
-    },
-    {
-      "key": "v6-e",
-      "label": "6차 E — 9-슬라이스만 — 디자이너 3×3 그대로(둥근 네모) + 작은 섬",
-      "file": "island/v6-e.json"
-    }
-  ],
+  "_about": "애니메이션끼리 잇는 정보 — 단계(알·어린 귤새·성체)마다 쓰는 동작, 날기 묶음(이륙 → 날기 → 착지), 혼비백산 이펙트 붙일 자리, 부화·자라기·쓰담 연결, 바다·화산 목록. id = animations/index.json 의 id. (예전 screen.json 에서 섬 지도·화면 요소를 뺀 것)",
+  "ashTimeline": "volcano/ash-cover/timeline.json",
   "seas": [
     {
       "key": "sea-v4-b",
@@ -73,7 +38,6 @@
       "label": "분출 B 퐁퐁"
     }
   ],
-  "ashTimeline": "animations/volcano/ash-cover/timeline.json",
   "stages": {
     "egg": {
       "label": "알",
@@ -183,31 +147,67 @@
     "_about": "섬 넓히기 때 고치 혼비백산: startle(1회) → panic 달리기(반복, A/B 중 하나) + 이펙트. attach[단계][이펙트 id] = 이펙트 pivot 을 붙일 자리 — 귤새 그림(32×32, 오른쪽 보기) 왼쪽 위 기준 그림 px, 뜬 높이(lift)도 더함. 왼쪽 보기면 x 를 32 - x 로. \"!\" 는 안 뒤집고 땀방울은 같이 뒤집음.",
     "stages": {
       "egg": {
-        "startle": ["gyulsae-egg-startle"],
-        "panic": ["gyulsae-egg-panic-a", "gyulsae-egg-panic-b"]
+        "startle": [
+          "gyulsae-egg-startle"
+        ],
+        "panic": [
+          "gyulsae-egg-panic-a",
+          "gyulsae-egg-panic-b"
+        ]
       },
       "juvenile": {
-        "startle": ["gyulsae-juvenile-startle"],
-        "panic": ["gyulsae-juvenile-panic-a", "gyulsae-juvenile-panic-b"]
+        "startle": [
+          "gyulsae-juvenile-startle"
+        ],
+        "panic": [
+          "gyulsae-juvenile-panic-a",
+          "gyulsae-juvenile-panic-b"
+        ]
       },
       "adult": {
-        "startle": ["gyulsae-adult-startle"],
-        "panic": ["gyulsae-adult-panic-a", "gyulsae-adult-panic-b"]
+        "startle": [
+          "gyulsae-adult-startle"
+        ],
+        "panic": [
+          "gyulsae-adult-panic-a",
+          "gyulsae-adult-panic-b"
+        ]
       }
     },
-    "fx": ["fx-panic-bang", "fx-panic-sweat"],
+    "fx": [
+      "fx-panic-bang",
+      "fx-panic-sweat"
+    ],
     "attach": {
       "egg": {
-        "fx-panic-bang": [16, 8],
-        "fx-panic-sweat": [10, 13]
+        "fx-panic-bang": [
+          16,
+          8
+        ],
+        "fx-panic-sweat": [
+          10,
+          13
+        ]
       },
       "juvenile": {
-        "fx-panic-bang": [16, 9],
-        "fx-panic-sweat": [8, 15]
+        "fx-panic-bang": [
+          16,
+          9
+        ],
+        "fx-panic-sweat": [
+          8,
+          15
+        ]
       },
       "adult": {
-        "fx-panic-bang": [16, -1],
-        "fx-panic-sweat": [8, 9]
+        "fx-panic-bang": [
+          16,
+          -1
+        ],
+        "fx-panic-sweat": [
+          8,
+          9
+        ]
       }
     }
   },
@@ -287,20 +287,10 @@
       "happy": "gyulsae-adult-pet-b"
     }
   },
-  "petFx": ["pet-heart", "pet-heart-l", "pet-heart-r", "pet-love"],
-  "ui": {
-    "xp-bar-empty": "ui/xp-bar-empty.png",
-    "xp-bar-full": "ui/xp-bar-full.png",
-    "icon-tangerine": "ui/icon-tangerine.png",
-    "icon-menu": "ui/icon-menu.png",
-    "icon-shop": "ui/icon-shop.png",
-    "icon-book": "ui/icon-book.png",
-    "fab-open": "ui/fab-open.png",
-    "icon-walk": "ui/icon-walk.png",
-    "icon-bongging": "ui/icon-bongging.png",
-    "icon-local-shop": "ui/icon-local-shop.png",
-    "icon-profile": "ui/icon-profile.png",
-    "icon-settings": "ui/icon-settings.png",
-    "icon-sound": "ui/icon-sound.png"
-  }
+  "petFx": [
+    "pet-heart",
+    "pet-heart-l",
+    "pet-heart-r",
+    "pet-love"
+  ]
 }

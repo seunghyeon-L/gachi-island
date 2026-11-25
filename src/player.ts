@@ -3,7 +3,29 @@
 //   · 그 장 동안 motionPx 만큼 앞으로 감. 시간 비율로 나눠 이어서 → 발이 미끄러지지 않음
 //   · liftPx 만큼 위로 뜸(음수 = 위). 다음 장 값까지 시간 비율로 이어서. 그림자는 안 뜸
 //   · loop 이면 끝 장 다음 0번, 아니면 끝 장에 멈추고 done = true (뜬 높이도 loop 면 끝 장 → 0번으로 이어서, 아니면 끝 장에서 안 이음)
-import type { Anim } from './data';
+/** anim.json 한 개 (형식: assets/animations/README.md) */
+export type Anim = {
+  id: string;
+  label: string;
+  /** loop = 끝나면 0번부터 · once = 한 번 재생하고 끝 장에 멈춤 · timeline = 혼자 재생 안 함(시간표가 장을 고름) */
+  playback: 'loop' | 'once' | 'timeline';
+  frameWidth: number;
+  frameHeight: number;
+  frameCount: number;
+  totalMs: number;
+  sheet: string;
+  shadow: string | null;
+  /** 장마다 보여 주는 시간(ms) */
+  durationsMs: number[];
+  /** 장마다 그 장 동안 앞으로 가는 거리(그림 px) — 걷기·날기. 0 = 제자리 */
+  motionPx: number[];
+  /** 장마다 위로 뜬 높이(그림 px, 음수 = 위). 그림자는 안 뜸 */
+  liftPx: number[];
+  /** 이펙트 기준점(그림 안 px) — 이 점을 붙일 자리에 맞춤 */
+  pivot?: [number, number];
+  /** 이펙트가 떠 있는 시간(ms) — 지나면 지움 */
+  lifetimeMs?: number;
+};
 
 export class Player {
   /** 지금 장 번호 (시트에서 왼쪽부터 0번) */

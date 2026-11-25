@@ -1,45 +1,23 @@
-# 가치고치 섬 화면 (Phaser)
+# 가치고치 애니메이션 (프론트 전달용)
 
-제주 친환경·상생 게이미피케이션 앱 **가치고치**의 섬 화면 테스트판이에요.
-귤새가 제주 모양 섬을 돌아다니고, 화산이 터져 섬이 넓어지고, 부화·자라기·쓰담쓰담 연출이 나와요.
+제주 친환경·상생 게이미피케이션 앱 **가치고치**의 애니메이션 묶음이에요.
+프론트는 이 저장소의 그림 시트와 JSON 을 가져가서, 각 README 의 규칙대로 화면에 그리면 돼요.
 
-- 보기: https://gachigochi-island.vercel.app/island/
-- 팀 앱 프론트(Expo React Native)의 `game/` 과 같은 **Vite + Phaser 3.90** 구성
+## 들어 있는 것
 
-```bash
-npm install
-npm run dev      # http://localhost:5192
-```
+| 경로 | 무엇 | 설명서 |
+|---|---|---|
+| `assets/animations/` | 귤새(알 · 어린 귤새 · 성체) 동작 · 부화 · 자라기 · 화산 · 화산재 · 바다 · 이펙트("!" · "?" · 땀방울 · 하트 · 폭죽 · 나뭇잎) — 애니메이션마다 폴더 하나 (`anim.json` + `sheet.png` + 있으면 `shadow.png`) | [README](assets/animations/README.md) · [목록](assets/animations/CATALOG.md) |
+| `assets/animations/links.json` | 애니메이션끼리 잇는 정보 — 단계별 동작 · 날기 묶음 · 혼비백산 이펙트 붙일 자리 · 부화/자라기/쓰담 연결 | [README](assets/animations/README.md) |
+| `assets/scenes/forest-explore/` | **숲 탐험** — 시작 · 숲 속 돌아다니기(반복) · 물건 찾기 · 떠나기. 캐릭터별 그림 모음(`kit.png`) + 장면 재생표(JSON) | [README](assets/scenes/forest-explore/README.md) |
+| `src/player.ts` | 애니메이션 재생 규칙 참고 코드 (장마다 시간 · 이동 · 뜬 높이) | |
+| `src/forestExplore.ts` | 숲 탐험 그리기 규칙 참고 코드 (재생표 → 그림, 프레임워크 무관) | |
 
-마우스 휠 = 확대·축소, 끌기 = 이동 (폰: 두 손가락 · 한 손가락). 오른쪽 사이드바에서 연출을 하나씩 틀어 볼 수 있어요.
+## 쓰는 순서
 
-## 애니메이션 가져다 쓰기
+1. `assets/animations/index.json` (id → 폴더) 로 필요한 애니메이션을 찾고, 폴더의 `anim.json` 대로 `sheet.png` 를 재생.
+2. 재생 규칙(장마다 시간이 다름 · 걷는 거리 · 뜬 높이 · 기준점 · 좌우 뒤집기)은 [assets/animations/README.md](assets/animations/README.md).
+3. 숲 탐험은 [assets/scenes/forest-explore/README.md](assets/scenes/forest-explore/README.md) — 장면 순서, 섬과 잇는 좌표, 재생표 형식, 그리는 순서가 다 적혀 있어요.
 
-애니메이션은 **폴더 하나에 하나씩** 들어 있어요 — 다른 프론트에서도 그대로 가져다 쓸 수 있게.
-
-```
-assets/animations/gyulsae/adult/waddle/
-├── anim.json    프레임 크기 · 장마다 시간(ms) · 이동 거리 · 뜬 높이 · 반복/1회
-├── sheet.png    몸 그림 (장을 가로 한 줄로)
-└── shadow.png   그림자 (있을 때만)
-```
-
-- 형식과 재생 규칙: [assets/animations/README.md](assets/animations/README.md)
-- 전체 목록: [assets/animations/CATALOG.md](assets/animations/CATALOG.md)
-- 어느 화면에 무엇을 쓰는지: [assets/screen.json](assets/screen.json)
-
-## 폴더
-
-| 경로 | 무엇 |
-|---|---|
-| `assets/animations/` | 애니메이션 (귤새 · 화산 · 바다 · 이펙트 · 화산재 시간표) |
-| `assets/scenes/forest-explore/` | 숲 탐험 (시작 · 숲 속 돌아다니기 반복 · 물건 찾기 · 떠나기) — [README](assets/scenes/forest-explore/README.md) |
-| `assets/island/` | 섬 조각 그림 + 섬마다 칸 배치 |
-| `assets/surf/` | 해안 파도 셰이더 그림 |
-| `assets/ui/` | 앱 화면 요소 그림 |
-| `assets/screen.json` | 화면 설정 |
-| `src/` | 화면 코드 (`player.ts` = 재생기, `scene.ts` = Phaser 장면, `overlay.ts` = 창 연출) |
-
-AI 도구로 작업할 땐 [AGENTS.md](AGENTS.md) 를 먼저 읽게 해 주세요 (폴더 지도 · 데이터 흐름 · 규칙).
-
-`assets/` 의 그림·데이터는 원본 도트 파일에서 **자동으로 내보낸 결과**라서, 손으로 고치면 다음 내보내기 때 덮어써져요. 바꾸고 싶은 게 있으면 이슈로 남겨 주세요.
+픽셀아트라 확대할 땐 번지게 하지 말고 정수 배로 (Phaser `pixelArt: true` · 캔버스 `image-rendering: pixelated`).
+그림은 디자이너 그림 그대로예요(색·모양 안 바꿈) — 움직임과 이펙트만 더했어요.

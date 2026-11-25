@@ -11,7 +11,8 @@ animations/gyulsae/adult/waddle/
 
 - 전체 목록: [CATALOG.md](CATALOG.md) (id · 폴더 · 크기 · 장 수 · 재생 방식 · 설명 표)
 - id → 폴더 대응: [index.json](index.json) — 화면은 이 파일부터 읽음
-- 어느 화면에 어떤 애니메이션을 쓰는지: [../screen.json](../screen.json)
+- 애니메이션끼리 잇는 정보(단계별 동작 · 날기 묶음 · 혼비백산 붙일 자리 · 부화/자라기/쓰담 연결): [links.json](links.json)
+- 숲 탐험(시작 · 숲 속 돌아다니기 · 물건 찾기 · 떠나기): [../scenes/forest-explore/README.md](../scenes/forest-explore/README.md)
 
 ## 폴더 이름 규칙
 
@@ -30,7 +31,7 @@ animations/gyulsae/adult/waddle/
 동작 이름: `still` = 디자이너 원본 한 장(정지) · `idle*` = 제자리 · `waddle`/`hop`/`roll` = 걷기 · `fly` = 날기 ·
 `takeoff`/`land` = 이륙/착지 · `startle` = 깜짝 · `panic-a`/`panic-b` = 혼비백산 달리기 · `pet-a`/`pet-b` = 쓰담쓰담.
 
-**id** 는 코드·`screen.json` 에서 부르는 이름이에요 (예: `gyulsae-adult-waddle`). 폴더를 옮기면 `index.json` 만 바뀌고 id 는 그대로.
+**id** 는 코드·`links.json` 에서 부르는 이름이에요 (예: `gyulsae-adult-waddle`). 폴더를 옮기면 `index.json` 만 바뀌고 id 는 그대로.
 
 ## sheet.png
 
@@ -73,7 +74,7 @@ animations/gyulsae/adult/waddle/
 
 ## 재생 규칙 (어느 프론트든 같음)
 
-[`src/player.ts`](../../src/player.ts) 가 이 규칙 그대로예요. React Native · 캔버스 등으로 옮길 때 이것만 지키면 움직임이 같아요.
+[`src/player.ts`](../../src/player.ts) (참고 코드) 가 이 규칙 그대로예요. React Native · 캔버스 등으로 옮길 때 이것만 지키면 움직임이 같아요.
 
 ```
 f = 0, t = 0                       // 지금 장, 지금 장을 보여 준 시간
@@ -99,7 +100,7 @@ f = 0, t = 0                       // 지금 장, 지금 장을 보여 준 시�
 |---|---|---|
 | `gyulsae/*` (귤새) | 그림 **가운데** | 좌표 (x, y) = 그림 가운데. **발 = (x, y + frameHeight/2)** (32×32 면 y+16, 시트 맨 아래 줄). 걷는 칸 (c, r) 에 세울 땐 x = (c+0.5)·32, y = (r+0.5)·32. 몸은 (x, y + 뜬 높이), 그림자는 (x, y) — 뜨지 않음 |
 | `gyulsae/hatch` · `grow` | 그림 가운데 | 귤새와 같음 (섬에서 재생할 때) |
-| `volcano/*` | 그림 **왼쪽 아래** | 화산 자리(`island/<섬>.json` 의 `volcano.cell` · `size`, 칸)의 **왼쪽 아래 모서리**에 맞춤. 그림(96×128)이 자리(3×2칸)보다 위로 2칸 더 올라감 — 연기·분출 자리 |
+| `volcano/*` | 그림 **왼쪽 아래** | 섬의 화산 자리(3×2칸)의 **왼쪽 아래 모서리**에 맞춤. 그림(96×128)이 자리(3×2칸)보다 위로 2칸 더 올라감 — 연기·분출 자리 |
 | `volcano/ash-cover/*` | 그림 왼쪽 위 | `timeline.json` 의 x, y (+ 화산 칸이 옮겨진 만큼) |
 | `sea/*` | 그림 왼쪽 위 | 32 의 배수 자리부터 화면 전체에 바둑판처럼 반복 |
 | `fx/*` | `pivot` | pivot 점을 붙일 자리에 맞춤 (아래 '이펙트 붙이기') |
@@ -112,11 +113,11 @@ f = 0, t = 0                       // 지금 장, 지금 장을 보여 준 시�
 - A → B **직선**(대각선 포함)으로, 매 갱신마다 `step(dt)` 가 돌려준 거리만큼 감 — 속도를 따로 정하지 말 것 (발과 바닥이 맞게).
 - 방향(좌우 뒤집기)은 출발할 때 B.x ≥ A.x 면 오른쪽으로 한 번 정함. B 에 닿으면 그 자리에 멈추고 남은 거리는 버림. 8px 보다 가까우면 출발 안 함.
 - 날기 = `takeoff`(1회, 그동안도 motionPx 만큼 감) → `fly`(반복) → 남은 거리 ≤ `land` 의 motionPx 합 이고 `fly` 가 끝 장일 때 → `land`(1회) → 쉬기.
-  묶음은 `screen.json` `stages.<단계>.anims[]` 의 `kind: "flight"` 항목 (`takeoff` · `src` · `land`).
+  묶음은 `links.json` `stages.<단계>.anims[]` 의 `kind: "flight"` 항목 (`takeoff` · `src` · `land`).
 
 ## 이펙트 붙이기
 
-- **혼비백산** (`fx-panic-bang` "!" · `fx-panic-sweat` 땀방울): 붙일 자리 = `screen.json` → `panic.attach[단계][이펙트 id]` — 귤새 그림 **왼쪽 위 기준** 그림 px (뜬 높이도 더함).
+- **혼비백산** (`fx-panic-bang` "!" · `fx-panic-sweat` 땀방울): 붙일 자리 = `links.json` → `panic.attach[단계][이펙트 id]` — 귤새 그림 **왼쪽 위 기준** 그림 px (뜬 높이도 더함).
   이펙트의 `pivot` 을 그 자리에 맞춤. 귤새가 왼쪽을 보면 x 를 `32 - x` 로, 땀방울은 같이 뒤집고 "!" 는 안 뒤집음. "!" 는 1.6~3.2초마다, 땀방울은 0.45~0.9초마다 다시 띄움.
 - **쓰담 하트** (`pet-heart` · `-l` · `-r`): pivot 을 귤새 그림 가운데에서 약 4 그림 px 아래에, 귤새 **앞**에. `pet-love`(3번 채움): 가운데에서 6 그림 px 아래, 귤새 **뒤**에. 이펙트도 귤새와 같은 배율로 키움.
 
