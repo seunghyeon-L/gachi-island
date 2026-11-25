@@ -10,6 +10,9 @@
 | `pet-heart-l` | [fx/pet-heart-l](fx/pet-heart-l/) | 32×48 | 20 | 660ms | once |  | 이펙트 — 쓰담 하트 (왼쪽으로) |
 | `pet-heart-r` | [fx/pet-heart-r](fx/pet-heart-r/) | 32×48 | 20 | 660ms | once |  | 이펙트 — 쓰담 하트 (오른쪽으로) |
 | `pet-love` | [fx/pet-love](fx/pet-love/) | 72×72 | 29 | 957ms | once |  | 이펙트 — 쓰담 쓰담 3번 채움 — 고리·하트 (귤새 뒤에) |
+| `fx-firework-a` | [fx/firework-a](fx/firework-a/) | 32×32 | 7 | 710ms | once |  | 이펙트 — 폭죽 A — 흰 십자 → 연두·주황 빛살 → 붉게 바램 (1회, 가운데 기준) |
+| `fx-firework-b` | [fx/firework-b](fx/firework-b/) | 32×32 | 7 | 710ms | once |  | 이펙트 — 폭죽 B — 흰 점 → 노란 마름모 고리가 퍼지며 끝이 붉게 바램 (1회, 가운데 기준) |
+| `fx-firework-c` | [fx/firework-c](fx/firework-c/) | 32×32 | 7 | 710ms | once |  | 이펙트 — 폭죽 C — 흰 고리 → 노란 고리가 크게 퍼지며 끝이 붉게 바램 (1회, 가운데 기준) |
 | `gyulsae-adult-idle` | [gyulsae/adult/idle](gyulsae/adult/idle/) | 32×32 | 17 | 3720ms | loop | ○ | 성체 귤새 — 가만히 (숨쉬기·깜빡임) |
 | `gyulsae-adult-panic-a` | [gyulsae/adult/panic-a](gyulsae/adult/panic-a/) | 32×32 | 8 | 400ms | loop | ○ | 성체 귤새 — 혼비백산 달리기 A (반복) |
 | `gyulsae-adult-panic-b` | [gyulsae/adult/panic-b](gyulsae/adult/panic-b/) | 32×32 | 6 | 240ms | loop | ○ | 성체 귤새 — 혼비백산 달리기 B (반복) |

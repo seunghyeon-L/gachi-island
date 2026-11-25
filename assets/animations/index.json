@@ -54,6 +54,9 @@
     "volcano-erupt-b": "volcano/erupt-b",
     "volcano-idle-a": "volcano/idle-a",
     "volcano-idle-b": "volcano/idle-b",
-    "volcano": "volcano/still"
+    "volcano": "volcano/still",
+    "fx-firework-a": "fx/firework-a",
+    "fx-firework-b": "fx/firework-b",
+    "fx-firework-c": "fx/firework-c"
   }
 }

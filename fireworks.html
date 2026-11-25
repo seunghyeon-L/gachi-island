@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>폭죽 미리보기</title>
+<style>
+  :root { --bg: #f5eedf; --panel: #fffaf0; --line: #e3d6bf; --text: #2f2a35; --dim: #786f80; --acc: #c9581a; --sky: #1b1830; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, 'Malgun Gothic', sans-serif; padding: 16px; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .sub { color: var(--dim); font-size: 13px; margin-bottom: 12px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; align-items: center; }
+  .chip { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 5px 10px; font: inherit; font-size: 13px; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--acc); border-color: var(--acc); color: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  .card h2 { font-size: 15px; margin: 0 0 2px; }
+  .card .lab { color: var(--dim); font-size: 12.5px; margin-bottom: 8px; min-height: 38px; }
+  canvas { display: block; image-rendering: pixelated; width: 100%; border-radius: 8px; }
+  .big { aspect-ratio: 1; background: var(--sky); }
+  .strip { margin-top: 8px; background: var(--sky); }
+  .meta { color: var(--dim); font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<h1>폭죽 스프라이트 시트 3종</h1>
+<div class="sub">디자이너 그림(512px = 32칸 × 16배) 7장씩을 32×32 시트로. 한 번 재생(once) · 장마다 시간 70·70·80·90·110·130·160ms(0.71초) · 기준점 가운데(16,16).
+  위 = 반복 재생(사이에 쉬는 시간), 아래 = 시트 그대로(0번 장이 왼쪽).</div>
+<div class="bar">
+  <span>속도</span><span id="speed"></span>
+  <span style="margin-left:10px">쉬는 시간</span><span id="gap"></span>
+  <span style="margin-left:10px">바탕</span><span id="bg"></span>
+</div>
+<div class="grid" id="grid"></div>
+<script type="module">
+const IDS = ['a', 'b', 'c'];
+const state = { speed: 1, gap: 500, bg: '#1b1830' };
+const items = [];
+const grid = document.getElementById('grid');
+
+function chips(el, opts, key) {
+  el.innerHTML = '';
+  for (const [v, label] of opts) {
+    const b = document.createElement('button');
+    b.className = 'chip'; b.textContent = label; b.setAttribute('aria-pressed', String(state[key] === v));
+    b.onclick = () => { state[key] = v; renderBar(); };
+    el.appendChild(b);
+  }
+}
+function renderBar() {
+  chips(document.getElementById('speed'), [[0.25, '×¼'], [0.5, '×½'], [1, '×1'], [2, '×2']], 'speed');
+  chips(document.getElementById('gap'), [[0, '없음'], [500, '0.5초'], [1200, '1.2초']], 'gap');
+  chips(document.getElementById('bg'), [['#1b1830', '밤하늘'], ['#3fb3c9', '바다'], ['#64ae5f', '풀밭'], ['#ffffff', '흰색']], 'bg');
+}
+renderBar();
+
+for (const k of IDS) {
+  const base = `animations/fx/firework-${k}/`;
+  const a = await (await fetch(base + 'anim.json')).json();
+  const img = new Image(); img.src = base + a.sheet; await img.decode();
+  const card = document.createElement('div'); card.className = 'card';
+  card.innerHTML = `<h2>${a.id}</h2><div class="lab">${a.label}</div>`;
+  const big = document.createElement('canvas'); big.className = 'big'; big.width = a.frameWidth * 8; big.height = a.frameHeight * 8;
+  const strip = document.createElement('canvas'); strip.className = 'strip'; strip.width = a.frameWidth * a.frameCount * 4 + (a.frameCount - 1) * 8; strip.height = a.frameHeight * 4 + 22;
+  const meta = document.createElement('div'); meta.className = 'meta';
+  meta.textContent = `${a.frameWidth}×${a.frameHeight} · ${a.frameCount}장 · ${a.totalMs}ms · 폴더 assets/animations/fx/firework-${k}/`;
+  card.append(big, strip, meta); grid.appendChild(card);
+  items.push({ a, img, big, strip, f: 0, t: 0, wait: 0 });
+}
+
+function drawStrip(it) {
+  const { a, img, strip } = it, x = strip.getContext('2d');
+  x.imageSmoothingEnabled = false;
+  x.fillStyle = state.bg; x.fillRect(0, 0, strip.width, strip.height);
+  for (let i = 0; i < a.frameCount; i++) {
+    const dx = i * (a.frameWidth * 4 + 8);
+    x.drawImage(img, i * a.frameWidth, 0, a.frameWidth, a.frameHeight, dx, 0, a.frameWidth * 4, a.frameHeight * 4);
+    x.fillStyle = state.bg === '#ffffff' ? '#555' : '#ddd'; x.font = '12px sans-serif';
+    x.fillText(`${i}번 ${a.durationsMs[i]}ms`, dx + 2, a.frameHeight * 4 + 16);
+    if (i === it.f && it.wait <= 0) { x.strokeStyle = '#ff8a3d'; x.lineWidth = 2; x.strokeRect(dx + 1, 1, a.frameWidth * 4 - 2, a.frameHeight * 4 - 2); }
+  }
+}
+
+let last = performance.now();
+function tick(now) {
+  const dt = Math.min(250, now - last) * state.speed; last = now;
+  for (const it of items) {
+    const { a } = it;
+    if (it.wait > 0) { it.wait -= dt; if (it.wait <= 0) { it.f = 0; it.t = 0; } }
+    else {
+      it.t += dt;
+      while (it.t >= a.durationsMs[it.f]) {
+        it.t -= a.durationsMs[it.f];
+        if (it.f + 1 < a.frameCount) it.f++;
+        else { it.wait = state.gap > 0 ? state.gap : 0.001; break; }   // 한 번 재생(once) → 끝나면 잠깐 쉬고 다시
+      }
+    }
+    const x = it.big.getContext('2d'); x.imageSmoothingEnabled = false;
+    x.fillStyle = state.bg; x.fillRect(0, 0, it.big.width, it.big.height);
+    if (it.wait <= 0 || state.gap === 0) x.drawImage(it.img, it.f * a.frameWidth, 0, a.frameWidth, a.frameHeight, 0, 0, it.big.width, it.big.height);
+    drawStrip(it);
+  }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
